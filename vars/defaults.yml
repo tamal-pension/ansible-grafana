@@ -1,0 +1,28 @@
+---
+discord_webhook: https://discord.com/api/webhooks/{{ discord_message_webhook_id }}/{{ discord_message_webhook_token }}
+discord_channel: "#notifications"
+private_dns: grafana
+private_domain: pension-stg.local
+loki_base_url: "http://loki.{{ private_domain }}:3100"
+app_user: grafana
+app_group: "{{ app_user }}"
+users_groups:
+  - name: "{{ app_group }}"
+users:
+  - name: "{{ app_user }}"
+    group: "{{ app_group }}"
+    append: true
+    create_home: false
+    shell: /sbin/nologin
+
+private_ip: "{{ ansible_default_ipv4.address }}"
+disk:
+    name: /dev/sdb
+    mount_options: defaults,noatime
+    mount: /data
+    size: 1
+    fstype: ext4
+    user: "{{ app_user }}"
+    group: "{{ app_group }}"
+    kms_key_id: "{{ disk_kms_key_id }}"
+    type: standard
