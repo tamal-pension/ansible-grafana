@@ -7,7 +7,7 @@ ACCOUNT_ID = "992382682634"
 AWS_REGION = "eu-west-1"
 NODE_COUNT = 1
 MAIN_SH_ARGS = <<MARKER
--e "playbook_name=ansible-grafana discord_message_owner_name=#{Etc.getpwuid(Process.uid).name}"
+-e "playbook_name=ansible-grafana discord_message_owner_name=#{Etc.getpwuid(Process.uid).name}environment_id=pension-stg.local" --tags "installation,configuration"
 MARKER
 Vagrant.configure("2") do |config|
   (1..NODE_COUNT).each do |i|
