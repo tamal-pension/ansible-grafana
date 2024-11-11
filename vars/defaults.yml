@@ -25,4 +25,4 @@ disk:
     group: "{{ app_group }}"
     kms_key_id: "{{ disk_kms_key_id }}"
     type: standard
-    
+aws_iam_role: "grafana-role"    
