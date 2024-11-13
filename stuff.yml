@@ -9,8 +9,10 @@
       value: "{{ private_ip }}"
       private: true
       ttl: 60
+    tags_facts:
+      disk_delete_on_termination: "disk_delete_on_termination"
+      grafana_admin_password: "grafana_admin_password"
     skip_extend_os_family: true
-  tags: configuration
 
 - ansible.builtin.include_role:
     name: grafana.grafana.grafana
@@ -22,7 +24,7 @@
     grafana_alerting: {}
     grafana_security:
       admin_user: "admin"
-      admin_password: "admin"
+      admin_password: "{{ grafana_admin_password }}"
     grafana_datasources:
     - name: loki
       type: loki

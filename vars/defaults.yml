@@ -23,4 +23,5 @@ disk:
     group: "{{ app_group }}"
     kms_key_id: "{{ disk_kms_key_id }}"
     type: standard
+    delete_on_termination: "{{ disk_delete_on_termination | default(true) }}"
 aws_iam_role: "grafana-role"    
