@@ -11,7 +11,7 @@
       ttl: 60
     tags_facts:
       disk_delete_on_termination: "disk_delete_on_termination"
-      grafana_admin_password: "grafana_admin_password"
+      #grafana_admin_password: "grafana_admin_password"
     skip_extend_os_family: true
 
 - ansible.builtin.include_role:
@@ -24,7 +24,7 @@
     grafana_alerting: {}
     grafana_security:
       admin_user: "admin"
-      admin_password: "{{ grafana_admin_password }}"
+      admin_password: "admin"
     grafana_datasources:
     - name: loki
       type: loki
